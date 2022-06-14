@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="importmap">
+      {
+        "imports": {
+          "animejs/lib/anime.es.js": "/node_modules/animejs/lib/anime.es.js",
+          "@MiyoshiMasato/img-popup": "/dist/index.module.js"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/dist/index.css">
+    <style>
+      ul { list-style: none; }
+      ul img { width: 100px; height: 100px; }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="/examples/images/sample.bmp" data-image="/examples/images/sample.bmp">
+          <img src="/examples/images/sample.bmp" alt="BMPリンク">
+        </a>
+      </li>
+      <li>
+        <a href="/examples/images/sample.jpg" title="JPEGリンク" data-image="/examples/images/sample.jpg">
+          <img src="/examples/images/sample.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="/examples/images/sample.gif" title="GIFリンク" data-image="/examples/images/sample.gif">
+          <img src="/examples/images/sample.gif">
+        </a>
+      </li>
+      <li>
+        <a href="/examples/images/sample.png" data-image="/examples/images/sample.png">
+          <img src="/examples/images/sample.png" alt="PNGリンク">
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <img src="/examples/images/sample.bmp" alt="BMP画像">
+      </li>
+      <li>
+        <img src="/examples/images/sample.jpg" title="JPEG画像" alt="">
+      </li>
+      <li>
+        <img src="/examples/images/sample.gif" title="GIF画像">
+      </li>
+      <li>
+        <img src="/examples/images/sample.png" alt="PNG画像">
+      </li>
+    </ul>
+    <script type="module">
+      import ImgPopup from "@MiyoshiMasato/img-popup"
+      let imgPopup = new ImgPopup();
+      imgPopup.run(document.querySelectorAll('ul li > a'));
+      imgPopup.run(document.querySelectorAll('ul li > img'));
+    </script>
+  </body>
+</html>

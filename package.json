@@ -1,0 +1,45 @@
+{
+  "name": "@masatomiyoshi/img-popup",
+  "version": "1.0.0",
+  "description": "A javascript library used to show pop-up image",
+  "source": "./src/index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.module.js",
+  "umd:main": "./dist/index.umd.js",
+  "author": "Masato Miyoshi <miyoshi@sitebridge.co.jp>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MasatoMiyoshi/img-popup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MasatoMiyoshi/img-popup/issues"
+  },
+  "homepage": "https://github.com/MasatoMiyoshi/img-popup#readme",
+  "keywords": [
+    "pop-up image"
+  ],
+  "scripts": {
+    "copy": "cp -r src/images dist",
+    "watch": "npm run copy; node_modules/microbundle/dist/cli.js watch --globals animejs/lib/anime.es.js=anime --no-compress",
+    "build": "npm run copy; node_modules/microbundle/dist/cli.js build --globals animejs/lib/anime.es.js=anime",
+    "test": "node_modules/jest/bin/jest.js",
+    "start": "http-server -p 8000"
+  },
+  "amdName": "ImgPopup",
+  "dependencies": {
+    "animejs": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/plugin-proposal-private-methods": "^7.17.12",
+    "@babel/preset-env": "^7.18.2",
+    "babel-jest": "^28.1.1",
+    "http-server": "^14.1.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
+    "microbundle": "^0.15.0",
+    "sass": "^1.52.3"
+  }
+}
