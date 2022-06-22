@@ -47,12 +47,14 @@ describe('index', () => {
   it('pop-ups anchor images', () => {
     let imgPopup = new ImgPopup();
     let elems = document.querySelectorAll('ul li > a');
+    imgPopup.init();
     imgPopup.run(elems);
   });
 
   it('pop-ups inline images', () => {
     let imgPopup = new ImgPopup();
     let elems = document.querySelectorAll('ul li > img');
+    imgPopup.init();
     imgPopup.run(elems);
   });
 });

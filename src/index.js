@@ -6,7 +6,6 @@ export default class ImgPopup {
   constructor(options) {
     this.currentImage = { url: '', title: '' };
     this.options = Object.assign(this.defaultOptions, options);
-    this.build();
   }
 
   get defaultOptions() {
@@ -16,43 +15,7 @@ export default class ImgPopup {
              resizeDuration: 700 };
   }
 
-  run(elems) {
-    if (elems.length == 0) return;
-
-    Array.prototype.forEach.call(elems, (elem) => {
-      let imageUrl = undefined;
-      let linkUrl = undefined;
-      let tagName = elem.tagName;
-      if (tagName == 'A') {
-        imageUrl = elem.getAttribute('data-image');
-        linkUrl = elem.getAttribute('href');
-      } else if (tagName == 'IMG') {
-        imageUrl = elem.getAttribute('src');
-        linkUrl = elem.getAttribute('src');
-      } else {
-        return;
-      }
-
-      if (imageUrl === undefined || imageUrl == null) return;
-
-      if (imageUrl.match(/\.(gif|jpe?g|png|bmp|gif\?\d+|jpe?g\?\d+|png\?\d+|bmp\?\d+)$/i)) {
-        let title = undefined;
-        if (tagName == 'A') {
-          title = elem.querySelector('img').getAttribute('alt');
-        } else if (tagName == 'IMG') {
-          title = elem.getAttribute('alt');
-        }
-        title = (title || elem.getAttribute('title') || '');
-
-        elem.addEventListener('click', (e) => {
-          e.preventDefault();
-          this.start(imageUrl, linkUrl, title);
-        });
-      }
-    });
-  }
-
-  build() {
+  init() {
     document.querySelector('body').insertAdjacentHTML('beforeend', this.overlayHTML);
     document.querySelector('body').insertAdjacentHTML('beforeend', this.containerHTML);
 
@@ -138,6 +101,42 @@ export default class ImgPopup {
         </div>
       </div>
     </div>`;
+  }
+
+  run(elems) {
+    if (elems.length == 0) return;
+
+    Array.prototype.forEach.call(elems, (elem) => {
+      let imageUrl = undefined;
+      let linkUrl = undefined;
+      let tagName = elem.tagName;
+      if (tagName == 'A') {
+        imageUrl = elem.getAttribute('data-image');
+        linkUrl = elem.getAttribute('href');
+      } else if (tagName == 'IMG') {
+        imageUrl = elem.getAttribute('src');
+        linkUrl = elem.getAttribute('src');
+      } else {
+        return;
+      }
+
+      if (imageUrl === undefined || imageUrl == null) return;
+
+      if (imageUrl.match(/\.(gif|jpe?g|png|bmp|gif\?\d+|jpe?g\?\d+|png\?\d+|bmp\?\d+)$/i)) {
+        let title = undefined;
+        if (tagName == 'A') {
+          title = elem.querySelector('img').getAttribute('alt');
+        } else if (tagName == 'IMG') {
+          title = elem.getAttribute('alt');
+        }
+        title = (title || elem.getAttribute('title') || '');
+
+        elem.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.start(imageUrl, linkUrl, title);
+        });
+      }
+    });
   }
 
   start(imageUrl, linkUrl, title) {

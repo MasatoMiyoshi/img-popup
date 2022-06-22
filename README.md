@@ -49,6 +49,7 @@ Build events to pop-up images:
 
 ```javascript
 let imgPopup = new ImgPopup();
+imgPopup.init();
 let anchors = document.querySelectorAll('ul li a');
 imgPopup.run(anchors);
 let imgs = document.querySelectorAll('ul li img');
