@@ -293,7 +293,6 @@ export default class ImgPopup {
   }
 
   computedStyle(element, property) {
-    return element.currentStyle ||
-           document.defaultView.getComputedStyle(element).getPropertyValue(property);
+    return document.defaultView.getComputedStyle(element).getPropertyValue(property);
   }
 }
