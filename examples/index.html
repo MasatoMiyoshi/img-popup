@@ -55,7 +55,7 @@
     </ul>
     <script type="module">
       import ImgPopup from "@MiyoshiMasato/img-popup"
-      let imgPopup = new ImgPopup();
+      let imgPopup = new ImgPopup({ containerID: "img_popup_sample" });
       imgPopup.init();
       imgPopup.run(document.querySelectorAll('ul li > a'));
       imgPopup.run(document.querySelectorAll('ul li > img'));

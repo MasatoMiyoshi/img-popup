@@ -9,18 +9,23 @@ export default class ImgPopup {
   }
 
   get defaultOptions() {
-    return { fadeDuration: 600,
+    return { containerID: 'img_popup',
+             fadeDuration: 600,
              imageFadeDuration: 600,
              positionFromTop: 50,
              resizeDuration: 700 };
+  }
+
+  get containerID() {
+    return this.options.containerID;
   }
 
   init() {
     document.querySelector('body').insertAdjacentHTML('beforeend', this.overlayHTML);
     document.querySelector('body').insertAdjacentHTML('beforeend', this.containerHTML);
 
-    this.popup = document.querySelector('#img_popup');
-    this.overlay = document.querySelector('#img_popup-overlay');
+    this.popup = document.querySelector(`#${this.containerID}`);
+    this.overlay = document.querySelector(`#${this.containerID}-overlay`);
     this.outerContainer = this.popup.querySelector('.img_popup-outer_container');
     this.container = this.popup.querySelector('.img_popup-container');
     this.image = this.popup.querySelector('img.img_popup-image');
@@ -48,12 +53,12 @@ export default class ImgPopup {
     this.popup.style.display = 'none';
     this.popup.addEventListener('click', (e) => {
       e.preventDefault();
-      if (e.target.getAttribute('id') == 'img_popup') this.end();
+      if (e.target.getAttribute('id') == this.containerID) this.end();
     });
 
     this.outerContainer.addEventListener('click', (e) => {
       e.preventDefault();
-      if (e.target.getAttribute('id') == 'img_popup') this.end();
+      if (e.target.getAttribute('id') == this.containerID) this.end();
     });
 
     this.popup.querySelector('.img_popup-image_link')
@@ -74,12 +79,12 @@ export default class ImgPopup {
   }
 
   get overlayHTML() {
-    return '<div id="img_popup-overlay" class="img_popup-overlay"></div>';
+    return `<div id="${this.containerID}-overlay" class="img_popup-overlay"></div>`;
   }
 
   get containerHTML() {
     return `
-    <div id="img_popup" class="img_popup">
+    <div id="${this.containerID}" class="img_popup">
       <div class="img_popup-outer_container">
         <div class="img_popup-container">
           <a class="img_popup-image_link" href="" target="_blank">
@@ -157,7 +162,7 @@ export default class ImgPopup {
     fadeIn(this.overlay, this.options.fadeDuration,
            { beginFunc: () => { this.overlay.style.display = 'block'; } });
 
-    fadeIn(document.querySelector('.img_popup-loader'), 600, {});
+    fadeIn(this.popup.querySelector('.img_popup-loader'), 600, {});
     Array.prototype.forEach.call(
       this.popup.querySelectorAll('.img_popup-data_container, .img_popup-caption'),
       (selector) => { selector.style.display = 'none'; }
