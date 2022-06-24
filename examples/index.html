@@ -6,7 +6,7 @@
       {
         "imports": {
           "animejs/lib/anime.es.js": "/node_modules/animejs/lib/anime.es.js",
-          "@MiyoshiMasato/img-popup": "/dist/index.module.js"
+          "@masatomiyoshi/img-popup": "/dist/index.module.js"
         }
       }
     </script>
@@ -54,7 +54,7 @@
       </li>
     </ul>
     <script type="module">
-      import ImgPopup from "@MiyoshiMasato/img-popup"
+      import ImgPopup from "@masatomiyoshi/img-popup"
       let imgPopup = new ImgPopup({ containerID: "img_popup_sample" });
       imgPopup.init();
       imgPopup.run(document.querySelectorAll('ul li > a'));
