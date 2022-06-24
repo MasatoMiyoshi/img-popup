@@ -27,6 +27,7 @@
   },
   "amdName": "ImgPopup",
   "dependencies": {
+    "@masatomiyoshi/fade": "^1.0.0",
     "animejs": "^3.2.1"
   },
   "devDependencies": {

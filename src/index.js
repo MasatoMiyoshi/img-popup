@@ -1,5 +1,5 @@
 import anime from 'animejs/lib/anime.es.js';
-import { fadeIn, fadeOut } from './util.js';
+import { fadeIn, fadeOut } from '@masatomiyoshi/fade';
 import './index.scss';
 
 export default class ImgPopup {
@@ -157,12 +157,13 @@ export default class ImgPopup {
 
     this.popup.style.top = top + 'px';
     this.popup.style.left = left + 'px';
-    fadeIn(this.popup, this.options.fadeDuration, {});
+    fadeIn(this.popup, { duration: this.options.fadeDuration });
 
-    fadeIn(this.overlay, this.options.fadeDuration,
-           { beginFunc: () => { this.overlay.style.display = 'block'; } });
+    fadeIn(this.overlay,
+      { duration: this.options.fadeDuration,
+        beginFunc: () => { this.overlay.style.display = 'block'; } });
 
-    fadeIn(this.popup.querySelector('.img_popup-loader'), 600, {});
+    fadeIn(this.popup.querySelector('.img_popup-loader'), { duration: 600 });
     Array.prototype.forEach.call(
       this.popup.querySelectorAll('.img_popup-data_container, .img_popup-caption'),
       (selector) => { selector.style.display = 'none'; }
@@ -266,8 +267,7 @@ export default class ImgPopup {
     anime.remove(popupLoader);
     popupLoader.style.display = 'none';
     fadeIn(this.popup.querySelector('.img_popup-image'),
-           this.options.imageFadeDuration,
-           {});
+      { duration: this.options.imageFadeDuration });
   };
 
   updateLink() {
@@ -279,17 +279,17 @@ export default class ImgPopup {
     let caption = this.popup.querySelector('.img_popup-caption');
 
     caption.innerHTML = this.currentImage.title;
-    fadeIn(caption, 200, {});
+    fadeIn(caption, { duration: 200 });
     this.outerContainer.classList.remove('img_popup-animating');
     fadeIn(this.popup.querySelector('.img_popup-data_container'),
-           this.options.resizeDuration,
-           { completeFunc: () => { this.sizeOverlay(); } });
+      { duration: this.options.resizeDuration,
+        completeFunc: () => { this.sizeOverlay(); } });
   }
 
   end() {
     window.removeEventListener('resize', this.sizeOverlay);
-    fadeOut(this.popup, this.options.fadeDuration, {});
-    fadeOut(this.overlay, this.options.fadeDuration, {});
+    fadeOut(this.popup, { duration: this.options.fadeDuration });
+    fadeOut(this.overlay, { duration: this.options.fadeDuration });
   }
 
   computedStyle(element, property) {

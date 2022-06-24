@@ -5,6 +5,7 @@ A javascript library used to pop-up images.
 ## Dependencies
 
 - animejs
+- @masatomiyoshi/fade
 
 ## Installation
 

@@ -19,6 +19,7 @@ module.exports = {
     "**/*test.js"
   ],
   transformIgnorePatterns: [
-    "/node_modules/(?!animejs)/"
+    "/node_modules/(?!animejs)/",
+    "/node_modules/(?!@masatomiyoshi)/"
   ]
 };
