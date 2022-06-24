@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.3
+
+- Fix fade component.
+- Fix cancel and loading images.
+
 ## 1.0.2
 
 - Add containerID option.
