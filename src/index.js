@@ -127,7 +127,11 @@ export default class ImgPopup {
 
       if (imageUrl === undefined || imageUrl == null) return;
 
-      if (imageUrl.match(/\.(gif|jpe?g|png|bmp|gif\?\d+|jpe?g\?\d+|png\?\d+|bmp\?\d+)$/i)) {
+      let url = undefined;
+      try {
+        url = new URL(imageUrl, window.location);
+      } catch(e) {}
+      if (url && url.pathname.match(/\.(gif|jpe?g|png|bmp)$/i)) {
         let title = undefined;
         if (tagName == 'A') {
           title = elem.querySelector('img').getAttribute('alt');
