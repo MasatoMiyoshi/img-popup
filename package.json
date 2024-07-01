@@ -20,8 +20,8 @@
     "pop-up image"
   ],
   "scripts": {
-    "watch": "node_modules/microbundle/dist/cli.js watch --globals animejs/lib/anime.es.js=anime --no-compress",
-    "build": "node_modules/microbundle/dist/cli.js build --globals animejs/lib/anime.es.js=anime",
+    "watch": "node_modules/microbundle/dist/cli.js watch --globals animejs/lib/anime.es.js=anime,@masatomiyoshi/fade=fade --no-compress",
+    "build": "node_modules/microbundle/dist/cli.js build --globals animejs/lib/anime.es.js=anime,@masatomiyoshi/fade=fade",
     "test": "node_modules/jest/bin/jest.js",
     "start": "http-server -p 8000"
   },
