@@ -4,7 +4,7 @@
   "description": "A javascript library used to show pop-up image",
   "source": "./src/index.js",
   "main": "./dist/index.js",
-  "module": "./dist/index.module.js",
+  "module": "./dist/index.module.mjs",
   "umd:main": "./dist/index.umd.js",
   "author": "Masato Miyoshi <miyoshi@sitebridge.co.jp>",
   "license": "MIT",
