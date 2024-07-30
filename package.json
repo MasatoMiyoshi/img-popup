@@ -1,6 +1,6 @@
 {
   "name": "@masatomiyoshi/img-popup",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A javascript library used to show pop-up image",
   "source": "./src/index.js",
   "main": "./dist/index.js",
