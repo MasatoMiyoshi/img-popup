@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.5
+
+- Update dependencies and devDependencies.
+- Change file extension to `.mjs` for module.
+
 ## 1.0.4
 
 - Add webp.
