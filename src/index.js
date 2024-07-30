@@ -44,7 +44,6 @@ export default class ImgPopup {
       left: parseInt(this.computedStyle(this.image, 'border-left-width'), 10)
     };
 
-    this.overlay.style.display = 'none';
     this.overlay.addEventListener('click', (e) => {
       e.preventDefault();
       this.end();
@@ -151,10 +150,6 @@ export default class ImgPopup {
   start(imageUrl, linkUrl, title) {
     let image = this.popup.querySelector('img.img_popup-image');
 
-    window.addEventListener('resize', this.sizeOverlay);
-
-    this.sizeOverlay();
-
     let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     let top = scrollTop + this.options.positionFromTop;
     let left = document.documentElement.scrollLeft || document.body.scrollLeft;
@@ -165,7 +160,7 @@ export default class ImgPopup {
 
     fadeIn(this.overlay,
       { duration: this.options.fadeDuration,
-        beginFunc: () => { this.overlay.style.display = 'block'; } });
+        beginFunc: () => { this.showOverlay(); } });
 
     fadeIn(this.popup.querySelector('.img_popup-loader'), { duration: 600 });
     Array.prototype.forEach.call(
@@ -220,11 +215,6 @@ export default class ImgPopup {
     preloader.src = imageUrl;
   }
 
-  sizeOverlay() {
-    this.overlay.style.width = document.body.clientWidth + 'px';
-    this.overlay.style.height = document.body.clientHeight + 'px';
-  }
-
   sizeContainer(image) {
     let oldWidth = this.outerContainer.offsetWidth;
     let oldHeight = this.outerContainer.offsetHeight;
@@ -272,7 +262,11 @@ export default class ImgPopup {
     popupLoader.style.display = 'none';
     fadeIn(this.popup.querySelector('.img_popup-image'),
       { duration: this.options.imageFadeDuration });
-  };
+  }
+
+  showOverlay() {
+    this.overlay.style.display = 'block';
+  }
 
   updateLink() {
     let link = this.popup.querySelector('.img_popup-image_link');
@@ -287,7 +281,7 @@ export default class ImgPopup {
     this.outerContainer.classList.remove('img_popup-animating');
     fadeIn(this.popup.querySelector('.img_popup-data_container'),
       { duration: this.options.resizeDuration,
-        completeFunc: () => { this.sizeOverlay(); } });
+        completeFunc: () => { this.showOverlay(); } });
   }
 
   end() {

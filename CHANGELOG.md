@@ -4,6 +4,7 @@
 
 - Update dependencies and devDependencies.
 - Change file extension to `.mjs` for module.
+- Fix an overlay action.
 
 ## 1.0.4
 
