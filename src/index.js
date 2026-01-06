@@ -1,4 +1,4 @@
-import anime from 'animejs/lib/anime.es.js';
+import { animate, utils } from 'animejs';
 import { fadeIn, fadeOut } from '@masatomiyoshi/fade';
 import './index.scss';
 
@@ -233,13 +233,12 @@ export default class ImgPopup {
     image.style.height = newHeight + 'px';
 
     if (oldWidth !== newWidth || oldHeight !== newHeight) {
-      anime({
-        targets: this.outerContainer,
+      animate(this.outerContainer, {
         width: newWidth,
         height: newHeight,
         duration: this.options.resizeDuration,
-        easing: 'easeOutSine',
-        complete: (a) => {
+        ease: 'outSine',
+        onComplete: (a) => {
           this.postResize(newWidth);
         }
       });
@@ -258,7 +257,7 @@ export default class ImgPopup {
 
   showImage() {
     let popupLoader = this.popup.querySelector('.img_popup-loader');
-    anime.remove(popupLoader);
+    utils.remove(popupLoader);
     popupLoader.style.display = 'none';
     fadeIn(this.popup.querySelector('.img_popup-image'),
       { duration: this.options.imageFadeDuration });

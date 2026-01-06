@@ -20,15 +20,15 @@
     "pop-up image"
   ],
   "scripts": {
-    "watch": "node_modules/microbundle/dist/cli.js watch --globals animejs/lib/anime.es.js=anime,@masatomiyoshi/fade=fade --no-compress",
-    "build": "node_modules/microbundle/dist/cli.js build --globals animejs/lib/anime.es.js=anime,@masatomiyoshi/fade=fade",
+    "watch": "node_modules/microbundle/dist/cli.js watch --no-compress",
+    "build": "node_modules/microbundle/dist/cli.js build",
     "test": "node_modules/jest/bin/jest.js",
     "start": "http-server -p 8000"
   },
   "amdName": "ImgPopup",
   "dependencies": {
-    "@masatomiyoshi/fade": "^1.0.1",
-    "animejs": "^3.2.2"
+    "@masatomiyoshi/fade": "^1.0.2",
+    "animejs": "^4.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.24.7",
