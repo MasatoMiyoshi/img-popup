@@ -23,7 +23,7 @@ import ImgPopup from '@masatomiyoshi/img-popup'
 
 Import css:
 ```css
-@import '@masatomiyoshi/img-popup'
+@use '@masatomiyoshi/img-popup'
 ```
 
 Build html as follows.
