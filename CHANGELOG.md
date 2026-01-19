@@ -3,6 +3,7 @@
 ## 1.0.6
 
 - Update dependencies and devDependencies.
+- Test on node 22 and 24.
 
 ## 1.0.5
 
